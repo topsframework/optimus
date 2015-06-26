@@ -17,26 +17,23 @@
 
 # Program settings
 # ==================
-# BIN             := # Binaries' names. If a subdir of any
-                     # src dir has the same name of this bin
-                     # it and all its subdir will be compiled
-                     # only for this specific binary
+# BIN             := main
 # ARLIB           := # Static/Shared libraries' names. If
 # SHRLIB          := # one is a dir, all srcs within will
                      # make the lib
 
 # Dependencies
 # ==============
-# GIT_DEPENDENCY  := # List of git dependencies in the form: 
-#                    # DEP_NAME => dep_path build_cmd        
-# WEB_DEPENDENCY  := # Same as above, but for URL downloads  
-#                    # with 'curl -o' (default) or 'wget -O' 
+# GIT_DEPENDENCY  := # List of git dependencies in the form:
+#                    # DEP_NAME => dep_path build_cmd
+# WEB_DEPENDENCY  := # Same as above, but for URL downloads
+#                    # with 'curl -o' (default) or 'wget -O'
 
 # Paths
 # =======
 # ASLIBS          := # Assembly paths
 # CLIBS           := # C paths
-# CXXLIBS         := # C++ paths
+CXXLIBS         := -I /Users/igorbonadio/Projetos/eigen-eigen-bdd17ee3b1b3
 # LDLIBS          := # Linker paths
 
 # Flags
@@ -50,7 +47,7 @@
 # Documentation
 # ===============
 # LICENSE         := # File with a License (def: LICENSE)
-# NOTICE          := # Notice of the License, to be put in 
+# NOTICE          := # Notice of the License, to be put in
 #                    # the top of any file (def: NOTICE).
 # DOXYFILE        := # Dxygen config file (def: Doxyfile)
 
