@@ -31,11 +31,11 @@ namespace optimus {
 
 VectorXd bfgs(unsigned int niter,
               double epsilon,
-              BacktrackingLineSearch &line_search,
-              VectorXd &guess,
-              MatrixXd &hessian,
-              std::function<double (VectorXd&)> f,
-              std::function<VectorXd (VectorXd&)> df);
+              const BacktrackingLineSearch &line_search,
+              const VectorXd &guess,
+              const MatrixXd &hessian,
+              std::function<double (const VectorXd&)> f,
+              std::function<VectorXd (const VectorXd&)> df);
 
 }  // namespace optimus
 

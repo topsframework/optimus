@@ -29,9 +29,15 @@ namespace optimus {
 
 class BacktrackingLineSearch {
  public:
-  BacktrackingLineSearch(double alpha, double tau, double c, unsigned int niter);
+  BacktrackingLineSearch(double alpha,
+                         double tau,
+                         double c,
+                         unsigned int niter);
 
-  double step_size(std::function<double (VectorXd&)> f, VectorXd &df, VectorXd &x, VectorXd &direction);
+  double step_size(std::function<double (const VectorXd&)> f,
+                   const VectorXd &df,
+                   const VectorXd &x,
+                   const VectorXd &direction) const;
 
  private:
   double _alpha;

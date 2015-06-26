@@ -23,11 +23,11 @@ namespace optimus {
 
 VectorXd bfgs(unsigned int niter,
               double epsilon,
-              BacktrackingLineSearch &line_search,
-              VectorXd &guess,
-              MatrixXd &hessian,
-              std::function<double (VectorXd&)> f,
-              std::function<VectorXd (VectorXd&)> df) {
+              const BacktrackingLineSearch &line_search,
+              const VectorXd &guess,
+              const MatrixXd &hessian,
+              std::function<double (const VectorXd&)> f,
+              std::function<VectorXd (const VectorXd&)> df) {
   VectorXd x = guess;
   MatrixXd hx = hessian.inverse();
   VectorXd dx = VectorXd::Zero(x.size());
@@ -61,7 +61,11 @@ VectorXd bfgs(unsigned int niter,
     if (denom * denom <= epsilon) {
       hx = MatrixXd::Identity(x.size(), x.size());
     } else {
-      hx = hx + ((step.transpose() * y + y.transpose() * hx * y) / ((step.transpose() * y) * (step.transpose() * y)))(0)*(step * step.transpose()) - (hx * y * step.transpose() + step * y.transpose() * hx) / (step.transpose() * y);
+      hx = hx + ((step.transpose() * y + y.transpose() * hx * y)
+                  / ((step.transpose() * y) * (step.transpose() * y)))(0)
+                *(step * step.transpose())
+              - (hx * y * step.transpose() + step * y.transpose() * hx)
+                / (step.transpose() * y);
     }
 
     dx = new_dx;
