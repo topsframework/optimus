@@ -4,3 +4,6 @@
 [submodule "external/gbenchmark"]
 	path = external/gbenchmark
 	url = https://github.com/google/benchmark.git
+[submodule "external/gmock"]
+	path = external/gmock
+	url = https://chromium.googlesource.com/external/googlemock.git
