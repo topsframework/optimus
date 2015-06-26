@@ -48,7 +48,7 @@ VectorXd bfgs(unsigned int niter,
     dx = new_dx;
   }
 
-  return x;
+  return std::move(x);
 }
 
 }  // namespace optimus
