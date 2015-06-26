@@ -11,7 +11,7 @@ VectorXd bfgs(unsigned int niter,
               std::function<VectorXd (VectorXd)> df) {
   VectorXd x = guess;
   MatrixXd hx = hessian.inverse();
-  VectorXd dx = VectorXd::Zero(2);
+  VectorXd dx = VectorXd::Zero(x.size());
 
   for (auto i = 0; i < niter; i++) {
     VectorXd new_dx = df(x);

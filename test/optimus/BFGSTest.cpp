@@ -46,3 +46,69 @@ TEST(BFGS, ShouldOptimizeBohachevskyFunction) {
   auto opt = optimus::bfgs(1000, 0.00000000000001,  optimus::BacktrackingLineSearch(1, 0.5, 0.5, 100), x, MatrixXd::Identity(x.size(), x.size()), f, df);
   ASSERT_THAT(f(opt), DoubleNear(0.0, 0.000001));
 }
+
+TEST(BFGS, ShouldOptimizeSphereFunction) {
+  auto f = [] (VectorXd x) -> double {
+    double result = 0;
+    for (auto i = 0; i < 10; i++) {
+      result += x(i)*x(i);
+    }
+    return result;
+  };
+
+  auto df = [] (VectorXd x) -> VectorXd {
+    auto new_x = VectorXd(x.size());
+    for (auto i = 0; i < 10; i++) {
+      new_x(i) = 2*x(i);
+    }
+    return new_x;
+  };
+
+  auto x = VectorXd(10);
+  x(0) = 10.1;
+  x(1) = 201.2;
+  x(2) = 10.1;
+  x(3) = 201.2;
+  x(4) = 10.1;
+  x(5) = 201.2;
+  x(6) = 10.1;
+  x(7) = 201.2;
+  x(8) = 10.1;
+  x(9) = 201.2;
+
+  auto opt = optimus::bfgs(1000, 0.00000000000001,  optimus::BacktrackingLineSearch(1, 0.5, 0.5, 100), x, MatrixXd::Identity(x.size(), x.size()), f, df);
+  ASSERT_THAT(f(opt), DoubleNear(0.0, 0.000001));
+}
+
+TEST(BFGS, ShouldOptimizeSumSquareFunction) {
+  auto f = [] (VectorXd x) -> double {
+    double result = 0;
+    for (auto i = 0; i < 10; i++) {
+      result += (i+1)*x(i)*x(i);
+    }
+    return result;
+  };
+
+  auto df = [] (VectorXd x) -> VectorXd {
+    auto new_x = VectorXd(x.size());
+    for (auto i = 0; i < 10; i++) {
+      new_x(i) = 2*(i+1)*x(i);
+    }
+    return new_x;
+  };
+
+  auto x = VectorXd(10);
+  x(0) = 10.1;
+  x(1) = 201.2;
+  x(2) = 10.1;
+  x(3) = 201.2;
+  x(4) = 10.1;
+  x(5) = 201.2;
+  x(6) = 10.1;
+  x(7) = 201.2;
+  x(8) = 10.1;
+  x(9) = 201.2;
+
+  auto opt = optimus::bfgs(1000, 0.00000000000001,  optimus::BacktrackingLineSearch(1, 0.5, 0.5, 100), x, MatrixXd::Identity(x.size(), x.size()), f, df);
+  ASSERT_THAT(f(opt), DoubleNear(0.0, 0.000001));
+}
