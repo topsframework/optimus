@@ -12,7 +12,7 @@ class BacktrackingLineSearch {
  public:
   BacktrackingLineSearch(double alpha, double tau, double c, unsigned int niter);
 
-  double step_size(std::function<double (VectorXd)> f, VectorXd df, VectorXd x, VectorXd direction);
+  double step_size(std::function<double (VectorXd&)> f, VectorXd &df, VectorXd &x, VectorXd &direction);
 
  private:
   double _alpha;
