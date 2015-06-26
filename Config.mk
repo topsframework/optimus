@@ -17,12 +17,9 @@
 
 # Program settings
 # ==================
-BIN             := main
 TESTBIN         := test
 BENCHBIN        := bench
-# ARLIB           := # Static/Shared libraries' names. If
-# SHRLIB          := # one is a dir, all srcs within will
-                     # make the lib
+SHRLIB          := optimus
 
 # Dependencies
 # ==============

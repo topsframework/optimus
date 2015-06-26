@@ -1,4 +1,4 @@
-#include "BFGS.hpp"
+#include "optimus/BFGS.hpp"
 
 namespace optimus {
 
