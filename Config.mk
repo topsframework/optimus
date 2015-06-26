@@ -17,7 +17,9 @@
 
 # Program settings
 # ==================
-# BIN             := main
+BIN             := main
+TESTBIN         := test
+BENCHBIN        := bench
 # ARLIB           := # Static/Shared libraries' names. If
 # SHRLIB          := # one is a dir, all srcs within will
                      # make the lib
@@ -41,7 +43,7 @@ CXXLIBS         := -I /Users/igorbonadio/Projetos/eigen-eigen-bdd17ee3b1b3
 # CPPFLAGS        := # Precompiler Flags
 # ASFLAGS         := # Assembly Flags
 # CFLAGS          := # C Flags
-# CXXFLAGS        := # C++ Flags
+CXXFLAGS        := -ansi -Wall -O2 -std=c++11
 # LDFLAGS         := # Linker flags
 
 # Documentation
@@ -55,4 +57,8 @@ CXXLIBS         := -I /Users/igorbonadio/Projetos/eigen-eigen-bdd17ee3b1b3
 # ===============
 # 'include conf/makeball.mk' for pre-configured options
 # to use the library 'makeball'
+include conf/googletest.mk
+include conf/googlebenchmark.mk
 
+CXXLIBS         += -I external/gmock/include/ -I external/gtest/include/
+LDLIBS          += -L external/gtest/make/ -L external/gmock/make/
