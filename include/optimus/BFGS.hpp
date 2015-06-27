@@ -29,13 +29,26 @@ using Eigen::MatrixXd;
 
 namespace optimus {
 
-VectorXd bfgs(unsigned int niter,
-              double epsilon,
-              const BacktrackingLineSearch &line_search,
-              const VectorXd &guess,
-              const MatrixXd &hessian,
-              std::function<double (const VectorXd&)> f,
-              std::function<VectorXd (const VectorXd&)> df);
+class BFGS {
+ public:
+  BFGS(unsigned int niter,
+       double epsilon,
+       const BacktrackingLineSearch &line_search,
+       const VectorXd &guess,
+       const MatrixXd &hessian,
+       std::function<double (const VectorXd&)> f,
+       std::function<VectorXd (const VectorXd&)> df);
+
+  VectorXd minimize() const;
+ private:
+  unsigned int _niter;
+  double _epsilon;
+  const BacktrackingLineSearch _line_search;
+  const VectorXd _guess;
+  const MatrixXd _hessian;
+  std::function<double (const VectorXd&)> _f;
+  std::function<VectorXd (const VectorXd&)> _df;
+};
 
 }  // namespace optimus
 

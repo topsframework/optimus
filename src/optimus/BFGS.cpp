@@ -21,19 +21,29 @@
 
 namespace optimus {
 
-VectorXd bfgs(unsigned int niter,
-              double epsilon,
-              const BacktrackingLineSearch &line_search,
-              const VectorXd &guess,
-              const MatrixXd &hessian,
-              std::function<double (const VectorXd&)> f,
-              std::function<VectorXd (const VectorXd&)> df) {
-  VectorXd x = guess;
-  MatrixXd hx = hessian.inverse();
+BFGS::BFGS(unsigned int niter,
+           double epsilon,
+           const BacktrackingLineSearch &line_search,
+           const VectorXd &guess,
+           const MatrixXd &hessian,
+           std::function<double (const VectorXd&)> f,
+           std::function<VectorXd (const VectorXd&)> df)
+    : _niter(niter),
+      _epsilon(epsilon),
+      _line_search(line_search),
+      _guess(guess),
+      _hessian(hessian),
+      _f(f),
+      _df(df) {
+}
+
+VectorXd BFGS::minimize() const {
+  VectorXd x = _guess;
+  MatrixXd hx = _hessian.inverse();
   VectorXd dx = VectorXd::Zero(x.size());
 
-  for (auto i = 0; i < niter; i++) {
-    VectorXd new_dx = df(x);
+  for (auto i = 0; i < _niter; i++) {
+    VectorXd new_dx = _df(x);
     VectorXd search_dir = hx * (-new_dx);
 
     if (search_dir.dot(new_dx) >= 0) {
@@ -42,14 +52,14 @@ VectorXd bfgs(unsigned int niter,
       search_dir = -new_dx;
     }
 
-    if (new_dx.norm() <= epsilon) {
+    if (new_dx.norm() <= _epsilon) {
       break;
     }
 
-    auto alpha = line_search.step_size(f, new_dx, x, search_dir);
+    auto alpha = _line_search.step_size(_f, new_dx, x, search_dir);
     auto step = search_dir * alpha;
 
-    if (alpha * alpha <= epsilon) {
+    if (alpha * alpha <= _epsilon) {
       break;
     }
 
@@ -58,7 +68,7 @@ VectorXd bfgs(unsigned int niter,
     auto y = new_dx - dx;
     auto denom = step.dot(y);
 
-    if (denom * denom <= epsilon) {
+    if (denom * denom <= _epsilon) {
       hx = MatrixXd::Identity(x.size(), x.size());
     } else {
       hx = hx + ((step.transpose() * y + y.transpose() * hx * y)

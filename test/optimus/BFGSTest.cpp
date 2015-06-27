@@ -21,7 +21,7 @@
 
 #include "BFGS.hpp"
 
-using optimus::bfgs;
+using optimus::BFGS;
 using optimus::BacktrackingLineSearch;
 
 using ::testing::DoubleNear;
@@ -42,10 +42,11 @@ TEST(BFGS, ShouldOptimizeASimpleFunction) {
   x(0) = 10.1;
   x(1) = 201.2;
 
-  auto line_search = optimus::BacktrackingLineSearch(1, 0.5, 0.5, 100);
+  auto line_search = BacktrackingLineSearch(1, 0.5, 0.5, 100);
   MatrixXd hx = MatrixXd::Identity(x.size(), x.size());
-  auto opt = optimus::bfgs(1000, 0.00000000000001,  line_search, x, hx, f, df);
-  ASSERT_THAT(f(opt), DoubleNear(-0.5, 0.000001));
+  auto optimizer = BFGS(1000, 0.00000000000001,  line_search, x, hx, f, df);
+  auto best_x = optimizer.minimize();
+  ASSERT_THAT(f(best_x), DoubleNear(-0.5, 0.000001));
 }
 
 TEST(BFGS, ShouldOptimizeBohachevskyFunction) {
@@ -65,10 +66,11 @@ TEST(BFGS, ShouldOptimizeBohachevskyFunction) {
   x(0) = 10.1;
   x(1) = 201.2;
 
-  auto line_search = optimus::BacktrackingLineSearch(1, 0.5, 0.5, 100);
+  auto line_search = BacktrackingLineSearch(1, 0.5, 0.5, 100);
   MatrixXd hx = MatrixXd::Identity(x.size(), x.size());
-  auto opt = optimus::bfgs(1000, 0.00000000000001,  line_search, x, hx, f, df);
-  ASSERT_THAT(f(opt), DoubleNear(0.0, 0.000001));
+  auto optimizer = BFGS(1000, 0.00000000000001,  line_search, x, hx, f, df);
+  auto best_x = optimizer.minimize();
+  ASSERT_THAT(f(best_x), DoubleNear(0.0, 0.000001));
 }
 
 TEST(BFGS, ShouldOptimizeSphereFunction) {
@@ -100,10 +102,11 @@ TEST(BFGS, ShouldOptimizeSphereFunction) {
   x(8) = 10.1;
   x(9) = 201.2;
 
-  auto line_search = optimus::BacktrackingLineSearch(1, 0.5, 0.5, 100);
+  auto line_search = BacktrackingLineSearch(1, 0.5, 0.5, 100);
   MatrixXd hx = MatrixXd::Identity(x.size(), x.size());
-  auto opt = optimus::bfgs(1000, 0.00000000000001,  line_search, x, hx, f, df);
-  ASSERT_THAT(f(opt), DoubleNear(0.0, 0.000001));
+  auto optimizer = BFGS(1000, 0.00000000000001,  line_search, x, hx, f, df);
+  auto best_x = optimizer.minimize();
+  ASSERT_THAT(f(best_x), DoubleNear(0.0, 0.000001));
 }
 
 TEST(BFGS, ShouldOptimizeSumSquareFunction) {
@@ -135,8 +138,9 @@ TEST(BFGS, ShouldOptimizeSumSquareFunction) {
   x(8) = 10.1;
   x(9) = 201.2;
 
-  auto line_search = optimus::BacktrackingLineSearch(1, 0.5, 0.5, 100);
+  auto line_search = BacktrackingLineSearch(1, 0.5, 0.5, 100);
   MatrixXd hx = MatrixXd::Identity(x.size(), x.size());
-  auto opt = optimus::bfgs(1000, 0.00000000000001,  line_search, x, hx, f, df);
-  ASSERT_THAT(f(opt), DoubleNear(0.0, 0.000001));
+  auto optimizer = BFGS(1000, 0.00000000000001,  line_search, x, hx, f, df);
+  auto best_x = optimizer.minimize();
+  ASSERT_THAT(f(best_x), DoubleNear(0.0, 0.000001));
 }
