@@ -8,7 +8,7 @@ Currently, Optimus implement only one algorithm:
 
 ## Documentation
 
-See [link](link)
+See [link](http://topsframework.github.io/optimus/doc/api/)
 
 ## Download
 
