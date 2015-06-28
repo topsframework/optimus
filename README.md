@@ -2,8 +2,6 @@
 
 Optimus is a library of nonlinear optimization algorithms written in C++.
 
-## Algorithms
-
 Currently, Optimus implement only one algorithm:
 
 * [BFGS](https://en.wikipedia.org/wiki/Broyden–Fletcher–Goldfarb–Shanno_algorithm)
