@@ -27,15 +27,44 @@ using Eigen::MatrixXd;
 
 namespace optimus {
 
+/**
+ * @class BacktrackingLineSearch
+ * @brief Class that represent the backtracking line search strategy
+ *
+ * In (unconstrained) minimization, a backtracking line search, a search
+ * scheme based on the Armijo–Goldstein condition, is a line search method
+ * to determine the maximum amount to move along a given search direction.
+ * It involves starting with a relatively large estimate of the step size
+ * for movement along the search direction, and iteratively shrinking the
+ * step size (i.e., "backtracking") until a decrease of the objective function
+ * is observed that adequately corresponds to the decrease that is expected,
+ * based on the local gradient of the objective function.
+ *
+ * [Wikipedia]: https://en.wikipedia.org/wiki/Backtracking_line_search
+ */
 class BacktrackingLineSearch {
  public:
+  /**
+   * Builds a new searcher.
+   * @param alpha maximum candidate step size value alpha > 0
+   * @param tau search control parameter \f$tau \in (0, 1)\f$
+   * @param c search control parameter \f$c \in (0, 1)\f$
+   * @param niter maximum number of iterations
+   */
   BacktrackingLineSearch(double alpha,
                          double tau,
                          double c,
                          unsigned int niter);
 
+  /**
+   * Calculates the step size
+   * @param f objective function
+   * @param dfx partial derivatives applied to x
+   * @param direction gradient direction
+   * @return a step size
+   */
   double step_size(std::function<double (const VectorXd&)> f,
-                   const VectorXd &df,
+                   const VectorXd &dfx,
                    const VectorXd &x,
                    const VectorXd &direction) const;
 

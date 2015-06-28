@@ -29,10 +29,10 @@ BacktrackingLineSearch::BacktrackingLineSearch(double alpha,
 }
 
 double BacktrackingLineSearch::step_size(std::function<double (const VectorXd&)> f,
-                                         const VectorXd &df,
+                                         const VectorXd &dfx,
                                          const VectorXd &x,
                                          const VectorXd &direction) const {
-  auto m = direction.dot(df);
+  auto m = direction.dot(dfx);
   auto t = -_c * m;
   auto fx = f(x);
   auto step = _alpha;

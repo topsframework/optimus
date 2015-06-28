@@ -29,7 +29,7 @@ using ::testing::DoubleNear;
 /**
  * QUADRATIC FUNCTION
  *
- * f(x) = x_1^2 + x_2^2 + x_1 - x_2
+ * \f$f(x) = x_1^2 + x_2^2 + x_1 - x_2\f$
  *
  * Dimensions: 2
  * Type: Bow Shape
@@ -60,7 +60,7 @@ TEST(BFGS, ShouldOptimizeASimpleFunction) {
 /**
  * BOHACHEVSKY FUNCTION
  *
- * f_1(x) = x_1^2 + 2x_2^2 - 0.3cos(3 \pi x_1) - 0.4cos(4 \pi x_2) + 0.7
+ * \f$f_1(x) = x_1^2 + 2x_2^2 - 0.3cos(3 \pi x_1) - 0.4cos(4 \pi x_2) + 0.7\f$
  *
  * Dimensions: 2
  * Type: Bow Shape
@@ -93,7 +93,7 @@ TEST(BFGS, ShouldOptimizeBohachevskyFunction) {
 /**
  * SPHERE FUNCTION
  *
- * f(x) = \sum_{t=1}^d x^2_i
+ * \f$f(x) = \sum_{t=1}^d x^2_i\f$
  *
  * Dimensions: D
  * Type: Bow Shape
@@ -138,7 +138,7 @@ TEST(BFGS, ShouldOptimizeSphereFunction) {
 /**
  * SUM SQUARES FUNCTION
  *
- * f(x) = \sum_{t=1}^d ix^2_i
+ * \f$f(x) = \sum_{t=1}^d ix^2_i\f$
  *
  * Dimensions: D
  * Type: Bow Shape
