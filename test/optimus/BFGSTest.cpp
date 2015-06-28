@@ -26,6 +26,14 @@ using optimus::BacktrackingLineSearch;
 
 using ::testing::DoubleNear;
 
+/**
+ * QUADRATIC FUNCTION
+ *
+ * f(x) = x_1^2 + x_2^2 + x_1 - x_2
+ *
+ * Dimensions: 2
+ * Type: Bow Shape
+ */
 TEST(BFGS, ShouldOptimizeASimpleFunction) {
   auto f = [] (const VectorXd &x) -> double {
     return x(0)*x(0) + x(1)*x(1) - x(0) + x(1);
@@ -49,6 +57,15 @@ TEST(BFGS, ShouldOptimizeASimpleFunction) {
   ASSERT_THAT(f(best_x), DoubleNear(-0.5, 0.000001));
 }
 
+/**
+ * BOHACHEVSKY FUNCTION
+ *
+ * f_1(x) = x_1^2 + 2x_2^2 - 0.3cos(3 \pi x_1) - 0.4cos(4 \pi x_2) + 0.7
+ *
+ * Dimensions: 2
+ * Type: Bow Shape
+ * Reference: http://www.sfu.ca/~ssurjano/boha.html
+ */
 TEST(BFGS, ShouldOptimizeBohachevskyFunction) {
   auto f = [] (const VectorXd &x) -> double {
     return x(0)*x(0) + 2*x(1)*x(1) - 0.3*cos(3*3.14*x(0))
@@ -73,6 +90,15 @@ TEST(BFGS, ShouldOptimizeBohachevskyFunction) {
   ASSERT_THAT(f(best_x), DoubleNear(0.0, 0.000001));
 }
 
+/**
+ * SPHERE FUNCTION
+ *
+ * f(x) = \sum_{t=1}^d x^2_i
+ *
+ * Dimensions: D
+ * Type: Bow Shape
+ * Reference: http://www.sfu.ca/~ssurjano/spheref.html
+ */
 TEST(BFGS, ShouldOptimizeSphereFunction) {
   auto f = [] (const VectorXd &x) -> double {
     double result = 0;
@@ -109,6 +135,15 @@ TEST(BFGS, ShouldOptimizeSphereFunction) {
   ASSERT_THAT(f(best_x), DoubleNear(0.0, 0.000001));
 }
 
+/**
+ * SUM SQUARES FUNCTION
+ *
+ * f(x) = \sum_{t=1}^d ix^2_i
+ *
+ * Dimensions: D
+ * Type: Bow Shape
+ * Reference: http://www.sfu.ca/~ssurjano/sumsqu.html
+ */
 TEST(BFGS, ShouldOptimizeSumSquareFunction) {
   auto f = [] (const VectorXd &x) -> double {
     double result = 0;
