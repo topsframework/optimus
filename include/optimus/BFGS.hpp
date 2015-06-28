@@ -20,8 +20,10 @@
 #ifndef OPTIMUS_BFGS_
 #define OPTIMUS_BFGS_
 
+// External headers
 #include <Eigen/Dense>
 
+// Optimus headers
 #include "BacktrackingLineSearch.hpp"
 
 using Eigen::VectorXd;
@@ -29,8 +31,36 @@ using Eigen::MatrixXd;
 
 namespace optimus {
 
+/**
+ * @class BFGS
+ * @brief Class that represents a BFGS optimizer.
+ *
+ * In numerical optimization, the Broyden–Fletcher–Goldfarb–Shanno (BFGS)
+ * algorithm is an iterative method for solving unconstrained nonlinear
+ * optimization problems.
+ *
+ * The BFGS method approximates Newton's method, a class of hill-climbing
+ * optimization techniques that seeks a stationary point of a (preferably
+ * twice continuously differentiable) function. For such problems, a necessary
+ * condition for optimality is that the gradient be zero. Newton's method and
+ * the BFGS methods are not guaranteed to converge unless the function has a
+ * quadratic Taylor expansion near an optimum. These methods use both the first
+ * and second derivatives of the function. However, BFGS has proven to have
+ * good performance even for non-smooth optimizations.
+ *
+ * [Wikipedia]: https://en.wikipedia.org/wiki/Broyden–Fletcher–Goldfarb–Shanno_algorithm
+ */
 class BFGS {
  public:
+
+  /**
+   * Builds a new optimizer.
+   * @param niter maximum number of iterations
+   * @epsilon threshold
+   * @hessian an initial hessian
+   * @f objective function
+   * @df partial derivatives
+   */
   BFGS(unsigned int niter,
        double epsilon,
        const BacktrackingLineSearch &line_search,
@@ -39,6 +69,10 @@ class BFGS {
        std::function<double (const VectorXd&)> f,
        std::function<VectorXd (const VectorXd&)> df);
 
+  /**
+   * Minimizes the objective function
+   * @return a local minimum point
+   */
   VectorXd minimize() const;
  private:
   unsigned int _niter;
