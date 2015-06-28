@@ -28,8 +28,8 @@ Optimus was designed to run on Unix/Linux operating systems. Tested platforms in
 
 Optimus was written in C++. It was compiled and tested using g++ 4.9.2 and clang 3.6.0. Besides one of the compilers, it requires:
 
-Git
-GNU Make
+* Git
+* GNU Make
 
 ## License
 
