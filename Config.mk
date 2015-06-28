@@ -5,15 +5,15 @@
 
 # Project info
 # ===============
-# PROJECT         := # Project name (def: Default)
-# VERSION         := # Version (def: 1.0.0)
-# STD_NAMESPACE   := # Project namespace for C/C++
-# GIT_REMOTE_PATH := # Remote path for git repository
-# MAINTEINER_NAME := # Your name
-# MAINTEINER_MAIL := # your_name@mail.com
-# COPYRIGHT       := # Copyright Holder
-# SYNOPSIS        := # One-line description of the program
-# DESCRIPTION     := # Longer description of the program
+# PROJECT         := Optimus
+# VERSION         := 1.0.0
+# STD_NAMESPACE   := optimus
+# GIT_REMOTE_PATH := https://github.com/topsframework/optimus.git
+# MAINTEINER_NAME := Ígor Bonadio
+# MAINTEINER_MAIL := igorbonadio@gmail.com
+# COPYRIGHT       := Optimus
+# SYNOPSIS        := Nonlinear optimization library
+# DESCRIPTION     := Optimus is a library of nonlinear optimization algorithms written in C++.
 
 # Program settings
 # ==================
