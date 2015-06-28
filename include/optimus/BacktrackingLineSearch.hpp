@@ -40,7 +40,7 @@ namespace optimus {
  * is observed that adequately corresponds to the decrease that is expected,
  * based on the local gradient of the objective function.
  *
- * [Wikipedia]: https://en.wikipedia.org/wiki/Backtracking_line_search
+ * [Wikipedia](https://en.wikipedia.org/wiki/Backtracking_line_search)
  */
 class BacktrackingLineSearch {
  public:

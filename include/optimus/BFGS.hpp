@@ -48,7 +48,7 @@ namespace optimus {
  * and second derivatives of the function. However, BFGS has proven to have
  * good performance even for non-smooth optimizations.
  *
- * [Wikipedia]: https://en.wikipedia.org/wiki/Broyden–Fletcher–Goldfarb–Shanno_algorithm
+ * [Wikipedia](https://en.wikipedia.org/wiki/Broyden–Fletcher–Goldfarb–Shanno_algorithm)
  */
 class BFGS {
  public:
