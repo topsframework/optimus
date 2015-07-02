@@ -25,14 +25,12 @@ SHRLIB          := optimus
 # ==============
 # GIT_DEPENDENCY  := # List of git dependencies in the form:
 #                    # DEP_NAME => dep_path build_cmd
-# WEB_DEPENDENCY  := # Same as above, but for URL downloads
-#                    # with 'curl -o' (default) or 'wget -O'
 
 # Paths
 # =======
 # ASLIBS          := # Assembly paths
 # CLIBS           := # C paths
-CXXLIBS         := -I /Users/igorbonadio/Projetos/eigen-eigen-bdd17ee3b1b3
+# CXXLIBS         :=
 # LDLIBS          := # Linker paths
 
 # Flags
@@ -56,6 +54,5 @@ CXXFLAGS        := -ansi -Wall -O2 -std=c++11
 # to use the library 'makeball'
 include conf/googletest.mk
 include conf/googlebenchmark.mk
+include conf/eigen.mk
 
-CXXLIBS         += -I external/gmock/include/ -I external/gtest/include/
-LDLIBS          += -L external/gtest/make/ -L external/gmock/make/
