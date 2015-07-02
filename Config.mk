@@ -55,4 +55,3 @@ CXXFLAGS        := -ansi -Wall -O2 -std=c++11
 include conf/googletest.mk
 include conf/googlebenchmark.mk
 include conf/eigen.mk
-
