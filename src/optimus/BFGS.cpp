@@ -42,7 +42,7 @@ VectorXd BFGS::minimize() const {
   MatrixXd hx = _hessian.inverse();
   VectorXd dx = VectorXd::Zero(x.size());
 
-  for (auto i = 0; i < _niter; i++) {
+  for (unsigned int i = 0; i < _niter; i++) {
     VectorXd new_dx = _df(x);
     VectorXd search_dir = hx * (-new_dx);
 

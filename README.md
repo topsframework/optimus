@@ -1,6 +1,7 @@
 # Optimus
 
 [![Build Status](https://travis-ci.org/topsframework/optimus.svg)](https://travis-ci.org/topsframework/optimus)
+[![Coverage Status](https://coveralls.io/repos/topsframework/optimus/badge.svg)](https://coveralls.io/r/topsframework/optimus)
 
 Optimus is a library of nonlinear optimization algorithms written in C++.
 

@@ -36,7 +36,7 @@ double BacktrackingLineSearch::step_size(std::function<double (const VectorXd&)>
   auto t = -_c * m;
   auto fx = f(x);
   auto step = _alpha;
-  for (auto i = 0; i < _niter; i++) {
+  for (unsigned int i = 0; i < _niter; i++) {
     VectorXd new_x = x + direction*step;
     if ((fx - f(new_x)) > step * t) {
       break;
