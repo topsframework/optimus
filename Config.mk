@@ -53,5 +53,4 @@ CXXFLAGS        := -ansi -Wall -O2 -std=c++11
 # 'include conf/makeball.mk' for pre-configured options
 # to use the library 'makeball'
 include conf/googletest.mk
-include conf/googlebenchmark.mk
 include eigen.mk
