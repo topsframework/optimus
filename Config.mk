@@ -5,15 +5,15 @@
 
 # Project info
 # ===============
-# PROJECT         := Optimus
-# VERSION         := 1.0.0
+PROJECT         := Optimus
+VERSION         := 1.0.0
 # STD_NAMESPACE   := optimus
-# GIT_REMOTE_PATH := https://github.com/topsframework/optimus.git
-# MAINTEINER_NAME := Ígor Bonadio
-# MAINTEINER_MAIL := igorbonadio@gmail.com
-# COPYRIGHT       := Optimus
-# SYNOPSIS        := Nonlinear optimization library
-# DESCRIPTION     := Optimus is a library of nonlinear optimization algorithms written in C++.
+GIT_REMOTE_PATH := https://github.com/topsframework/optimus.git
+MAINTEINER_NAME := Ígor Bonadio
+MAINTEINER_MAIL := igorbonadio@gmail.com
+COPYRIGHT       := Optimus
+SYNOPSIS        := Nonlinear optimization library
+DESCRIPTION     := Optimus is a library of nonlinear optimization algorithms written in C++.
 
 # Program settings
 # ==================
@@ -28,25 +28,14 @@ SHRLIB          := optimus
 
 # Paths
 # =======
-# ASLIBS          := # Assembly paths
-# CLIBS           := # C paths
-# CXXLIBS         :=
-# LDLIBS          := # Linker paths
+CXXLIBS         +=
+LDLIBS          += # Linker paths
 
 # Flags
 # =======
-# CPPFLAGS        := # Precompiler Flags
-# ASFLAGS         := # Assembly Flags
-# CFLAGS          := # C Flags
-CXXFLAGS        := -ansi -Wall -O2 -std=c++11
-# LDFLAGS         := # Linker flags
-
-# Documentation
-# ===============
-# LICENSE         := # File with a License (def: LICENSE)
-# NOTICE          := # Notice of the License, to be put in
-#                    # the top of any file (def: NOTICE).
-# DOXYFILE        := # Dxygen config file (def: Doxyfile)
+CPPFLAGS        += # Precompiler Flags
+CXXFLAGS        += -ansi -Wall -O2 -std=c++11
+LDFLAGS         += # Linker flags
 
 # Makeball list
 # ===============
